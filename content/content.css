@@ -1,0 +1,317 @@
+/* PromptForge HUD & Floating Injected Styles */
+
+:root {
+  --pf-primary: #3b82f6;
+  --pf-primary-hover: #2563eb;
+  --pf-indigo: #6366f1;
+  --pf-cyan: #06b6d4;
+  --pf-bg-dark: #090d16;
+  --pf-card-dark: #0f172a;
+  --pf-surface: #1e293b;
+  --pf-border: #334155;
+  --pf-border-glow: rgba(59, 130, 246, 0.4);
+  --pf-text: #f8fafc;
+  --pf-text-dim: #94a3b8;
+}
+
+/* Floating Inline Trigger Button */
+.promptforge-floating-btn {
+  position: absolute;
+  z-index: 999999;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #6366f1 50%, #4f46e5 100%);
+  color: #ffffff !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4);
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  opacity: 0.92;
+}
+
+.promptforge-floating-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.55);
+  opacity: 1;
+}
+
+.promptforge-floating-btn .pf-icon {
+  font-size: 13px;
+  animation: pfPulse 2.5s infinite;
+}
+
+@keyframes pfPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+/* Backdrop */
+.promptforge-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  animation: pfModalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pfModalFadeIn {
+  from { opacity: 0; transform: scale(0.97) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* HUD Window */
+.promptforge-hud {
+  width: 100%;
+  max-width: 720px;
+  background: var(--pf-bg-dark);
+  border: 1px solid var(--pf-border);
+  border-radius: 18px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  color: var(--pf-text);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.promptforge-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #0f172a88;
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.promptforge-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.promptforge-tag {
+  background: linear-gradient(135deg, #2563eb, #6366f1);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.promptforge-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--pf-text-dim);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.promptforge-close-btn:hover {
+  background: var(--pf-surface);
+  color: #fff;
+}
+
+/* Framework Selector */
+.promptforge-frameworks {
+  display: flex;
+  gap: 8px;
+  padding: 12px 20px;
+  background: #090d16;
+  border-bottom: 1px solid var(--pf-border);
+  overflow-x: auto;
+}
+
+.promptforge-framework-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--pf-card-dark);
+  color: var(--pf-text-dim);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 13px;
+  border-radius: 9px;
+  cursor: pointer;
+  border: 1px solid var(--pf-border);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.promptforge-framework-chip:hover {
+  background: var(--pf-surface);
+  color: #fff;
+  border-color: #475569;
+}
+
+.promptforge-framework-chip.active {
+  background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%);
+  color: #fff;
+  border-color: #3b82f6;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+}
+
+/* Body */
+.promptforge-hud-body {
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.promptforge-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--pf-text-dim);
+  margin-bottom: 6px;
+}
+
+.promptforge-input-box {
+  width: 100%;
+  background: var(--pf-card-dark);
+  border: 1px solid var(--pf-border);
+  border-radius: 10px;
+  color: var(--pf-text);
+  padding: 11px 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 64px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.promptforge-input-box:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.promptforge-result-box {
+  background: #030712;
+  border: 1px solid #1e3a8a;
+  border-radius: 10px;
+  color: #e0e7ff;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.55;
+  min-height: 140px;
+  max-height: 260px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.promptforge-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  color: #93c5fd;
+  font-size: 13.5px;
+}
+
+.promptforge-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #3b82f6;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: pfSpin 0.7s linear infinite;
+}
+
+@keyframes pfSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.promptforge-hud-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-top: 1px solid var(--pf-border);
+  background: #0f172a55;
+}
+
+.promptforge-savings-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.promptforge-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.promptforge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+.promptforge-btn-secondary {
+  background: var(--pf-surface);
+  color: #cbd5e1;
+  border: 1px solid var(--pf-border);
+}
+
+.promptforge-btn-secondary:hover {
+  background: #334155;
+  color: #fff;
+}
+
+.promptforge-btn-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+}
+
+.promptforge-btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}

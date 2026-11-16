@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptForge</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="../icons/icon-48.png" alt="PromptForge" class="logo">
+        <div>
+          <h1 class="title">PromptForge</h1>
+          <p class="subtitle">AI Prompt Engineering Layer</p>
+        </div>
+      </div>
+      <a href="../options/options.html" target="_blank" class="icon-btn" title="Settings">⚙️</a>
+    </header>
+
+    <!-- Metrics -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-val" id="val-forged">0</span>
+        <span class="metric-lbl">Prompts Forged</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val" id="val-turns">0</span>
+        <span class="metric-lbl">Turns Saved</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val highlight" id="val-tokens">0</span>
+        <span class="metric-lbl">Tokens Saved (Est.)</span>
+      </div>
+    </section>
+
+    <!-- Framework Bar -->
+    <div class="framework-bar" id="framework-bar">
+      <button class="chip active" data-id="balanced">🎯 CREATE</button>
+      <button class="chip" data-id="code">💻 Code</button>
+      <button class="chip" data-id="tokensaver">⚡ Token Saver</button>
+      <button class="chip" data-id="reasoning">🧠 CoT</button>
+      <button class="chip" data-id="executive">📊 Executive</button>
+    </div>
+
+    <!-- Playground -->
+    <main class="playground">
+      <div class="control-group">
+        <label for="thought-input">Raw Human Thought</label>
+        <textarea id="thought-input" rows="3" placeholder="e.g. explain raft consensus algorithm vs paxos"></textarea>
+      </div>
+
+      <button id="forge-btn" class="btn-primary">⚡ Forge Super-Prompt</button>
+
+      <div class="control-group result-group" id="result-group" style="display: none;">
+        <div class="result-header">
+          <label for="result-output">Optimized Prompt</label>
+          <button id="copy-btn" class="copy-link">📋 Copy</button>
+        </div>
+        <textarea id="result-output" rows="6" readonly></textarea>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Shortcut: Press <code>Alt + P</code> on any AI chat</span>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

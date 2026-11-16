@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptForge — Settings & Model Providers</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="../icons/icon-48.png" alt="Logo" class="logo">
+        <div>
+          <h1 class="title">PromptForge Settings</h1>
+          <p class="subtitle">AI Model Configuration, API Credentials & Prompt Optimization Rules</p>
+        </div>
+      </div>
+      <a href="https://github.com/your-username/promptforge" target="_blank" class="github-btn">GitHub Repo ↗</a>
+    </header>
+
+    <main class="main-content">
+      <!-- AI Engine Section -->
+      <section class="card">
+        <h2 class="card-heading">Optimization Engine</h2>
+        <p class="card-subheading">Choose which model or algorithmic framework crafts your prompts.</p>
+
+        <div class="provider-list">
+          <label class="provider-option">
+            <input type="radio" name="provider" value="offline" checked>
+            <div class="provider-info">
+              <span class="p-title">🛡️ Offline Algorithmic Heuristics (Recommended Default)</span>
+              <span class="p-desc">100% private, zero setup, runs instantly in browser. No API keys or network requests needed.</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="chrome_ai">
+            <div class="provider-info">
+              <span class="p-title">🤖 Chrome Built-in AI (Prompt API)</span>
+              <span class="p-desc">Local Gemini Nano running directly inside Google Chrome with zero server latency.</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="gemini">
+            <div class="provider-info">
+              <span class="p-title">💎 Google Gemini API</span>
+              <span class="p-desc">High precision, generous free tier (uses gemini-1.5-flash).</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="anthropic">
+            <div class="provider-info">
+              <span class="p-title">🎭 Anthropic Claude API</span>
+              <span class="p-desc">Refines using claude-3-5-haiku for exceptionally structured reasoning.</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="openai">
+            <div class="provider-info">
+              <span class="p-title">🧠 OpenAI API</span>
+              <span class="p-desc">Uses gpt-4o-mini for cost-effective, high-speed prompt generation.</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="groq">
+            <div class="provider-info">
+              <span class="p-title">🚀 Groq Cloud API</span>
+              <span class="p-desc">Ultra-fast sub-second rewrites powered by Llama 3.3 70B.</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="deepseek">
+            <div class="provider-info">
+              <span class="p-title">🐋 DeepSeek API</span>
+              <span class="p-desc">DeepSeek-V3 / Chat endpoint for developer-centric queries.</span>
+            </div>
+          </label>
+
+          <label class="provider-option">
+            <input type="radio" name="provider" value="ollama">
+            <div class="provider-info">
+              <span class="p-title">🦙 Local Ollama Instance</span>
+              <span class="p-desc">Connects to your local machine (http://localhost:11434). Zero cloud dependency.</span>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- Credentials Section -->
+      <section class="card" id="keys-card">
+        <h2 class="card-heading">API Credentials</h2>
+        <p class="card-subheading">Keys are stored locally in your browser's encrypted sync storage.</p>
+
+        <!-- Gemini -->
+        <div class="field" id="field-gemini">
+          <label for="key-gemini">Gemini API Key</label>
+          <div class="input-row">
+            <input type="password" id="key-gemini" placeholder="AIzaSy...">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" class="link-btn">Get Free Key ↗</a>
+          </div>
+        </div>
+
+        <!-- Anthropic -->
+        <div class="field" id="field-anthropic">
+          <label for="key-anthropic">Anthropic API Key</label>
+          <div class="input-row">
+            <input type="password" id="key-anthropic" placeholder="sk-ant-...">
+            <a href="https://console.anthropic.com/settings/keys" target="_blank" class="link-btn">Get Key ↗</a>
+          </div>
+        </div>
+
+        <!-- OpenAI -->
+        <div class="field" id="field-openai">
+          <label for="key-openai">OpenAI API Key</label>
+          <div class="input-row">
+            <input type="password" id="key-openai" placeholder="sk-proj-...">
+            <a href="https://platform.openai.com/api-keys" target="_blank" class="link-btn">Get Key ↗</a>
+          </div>
+        </div>
+
+        <!-- Groq -->
+        <div class="field" id="field-groq">
+          <label for="key-groq">Groq API Key</label>
+          <div class="input-row">
+            <input type="password" id="key-groq" placeholder="gsk_...">
+            <a href="https://console.groq.com/keys" target="_blank" class="link-btn">Get Key ↗</a>
+          </div>
+        </div>
+
+        <!-- DeepSeek -->
+        <div class="field" id="field-deepseek">
+          <label for="key-deepseek">DeepSeek API Key</label>
+          <div class="input-row">
+            <input type="password" id="key-deepseek" placeholder="sk-...">
+            <a href="https://platform.deepseek.com/api_keys" target="_blank" class="link-btn">Get Key ↗</a>
+          </div>
+        </div>
+
+        <!-- Ollama Config -->
+        <div class="field" id="field-ollama">
+          <label for="ollama-url">Ollama Base Endpoint</label>
+          <input type="text" id="ollama-url" value="http://localhost:11434/api/generate">
+
+          <label for="ollama-model" style="margin-top: 10px;">Model Tag</label>
+          <input type="text" id="ollama-model" value="llama3">
+        </div>
+      </section>
+
+      <!-- Preferences Section -->
+      <section class="card">
+        <h2 class="card-heading">Preferences & Defaults</h2>
+
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-title">Show Floating "⚡ Forge" Trigger</div>
+            <div class="toggle-desc">Displays the subtle button at the bottom-right of chat inputs.</div>
+          </div>
+          <input type="checkbox" id="pref-floating-btn" checked>
+        </div>
+
+        <div class="field" style="margin-top: 18px;">
+          <label for="default-framework">Default Prompt Framework</label>
+          <select id="default-framework">
+            <option value="balanced">🎯 CREATE Framework (Balanced)</option>
+            <option value="code">💻 Staff Software Engineer (Code)</option>
+            <option value="tokensaver">⚡ Token Conserver (Ultra-Dense)</option>
+            <option value="reasoning">🧠 Deep Reasoning (Chain-of-Thought)</option>
+            <option value="executive">📊 Executive Brief (BLUF)</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Action Bar -->
+      <div class="save-bar">
+        <button id="save-btn" class="btn-save">Save Configuration</button>
+        <span id="save-msg" class="save-msg"></span>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>
