@@ -1,0 +1,29 @@
+name: Validate Extension & Lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate manifest.json syntax
+        run: |
+          jq . manifest.json > /dev/null
+          echo "manifest.json is valid JSON"
+
+      - name: Check required extension assets
+        run: |
+          test -f manifest.json
+          test -f icons/icon-16.png
+          test -f icons/icon-48.png
+          test -f icons/icon-128.png
+          test -f popup/popup.html
+          test -f options/options.html
+          echo "All required assets exist"
